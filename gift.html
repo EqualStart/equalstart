@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подарок — Равный старт</title>
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #222;
+            background: #f7f7f5;
+            line-height: 1.6;
+        }
+
+        header {
+            background: white;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 24px 20px;
+        }
+
+        .header-inner {
+            max-width: 900px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #222;
+        }
+
+        .back {
+            color: #555;
+            text-decoration: none;
+        }
+
+        main {
+            max-width: 900px;
+            margin: auto;
+            padding: 70px 20px 100px;
+        }
+
+        .number {
+            color: #777;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 44px;
+            line-height: 1.15;
+            margin: 0 0 10px;
+        }
+
+        .institution {
+            color: #666;
+            font-size: 19px;
+            margin-bottom: 45px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e2e2e2;
+            border-radius: 10px;
+            padding: 35px;
+            max-width: 720px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .label {
+            color: #777;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 9px 14px;
+            background: #f0f0ed;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .record {
+            margin-top: 45px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .error {
+            font-size: 20px;
+            color: #666;
+        }
+
+        footer {
+            max-width: 900px;
+            margin: auto;
+            padding: 35px 20px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 36px; }
+
+            .row {
+                grid-template-columns: 1fr;
+                gap: 3px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+        <a class="logo" href="index.html">Равный старт</a>
+        <a class="back" href="archive.html">← Архив</a>
+    </div>
+</header>
+
+<main id="content">
+    Загружаем запись...
+</main>
+
+<footer>
+    © Равный старт
+</footer>
+
+<script>
+
+    function formatDate(dateString) {
+        const date = new Date(dateString + "T00:00:00");
+
+        return new Intl.DateTimeFormat("ru-RU", {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        }).format(date);
+    }
+
+    function formatPrice(price) {
+        return new Intl.NumberFormat("ru-RU").format(price) + " ₽";
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const giftId = params.get("id");
+
+    fetch("gifts.json")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Не удалось загрузить архив");
+            }
+
+            return response.json();
+        })
+
+        .then(gifts => {
+
+            const gift = gifts.find(item => item.id === giftId);
+            const content = document.getElementById("content");
+
+            if (!gift) {
+                content.innerHTML =
+                    '<div class="error">Подарок не найден.</div>';
+                return;
+            }
+
+            document.title =
+                "Подарок №" + gift.id + " — Равный старт";
+
+            content.innerHTML = `
+
+                <div class="number">
+                    ПОДАРОК №${gift.id}
+                </div>
+
+                <h1>${gift.gift}</h1>
+
+                <div class="institution">
+                    ${gift.city} · ${gift.institution}
+                </div>
+
+                <div class="card">
+
+                    <div class="row">
+                        <div class="label">Возраст</div>
+                        <div>${gift.age} лет</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">День рождения</div>
+                        <div>${formatDate(gift.birthday)}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">Стоимость</div>
+                        <div>${formatPrice(gift.price)}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">Получен в ПВЗ</div>
+                        <div>${formatDate(gift.pickup_date)}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">Место получения</div>
+                        <div>${gift.pickup_place}</div>
+                    </div>
+
+                    <div class="status">
+                        ${gift.status}
+                    </div>
+
+                </div>
+
+                <div class="record">
+                    Архивная запись №${gift.id} · Равный старт
+                </div>
+            `;
+        })
+
+        .catch(error => {
+            document.getElementById("content").innerHTML =
+                '<div class="error">Архивная запись временно недоступна.</div>';
+        });
+
+</script>
+
+</body>
+</html>
