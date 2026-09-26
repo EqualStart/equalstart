@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подарок №0001 — Равный старт</title>
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #222;
+            background: #f7f7f5;
+            line-height: 1.6;
+        }
+
+        header {
+            background: white;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 24px 20px;
+        }
+
+        .header-inner {
+            max-width: 900px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #222;
+        }
+
+        .back {
+            color: #555;
+            text-decoration: none;
+        }
+
+        main {
+            max-width: 900px;
+            margin: auto;
+            padding: 70px 20px 100px;
+        }
+
+        .number {
+            color: #777;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 44px;
+            line-height: 1.15;
+            margin: 0 0 10px;
+        }
+
+        .institution {
+            color: #666;
+            font-size: 19px;
+            margin-bottom: 45px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e2e2e2;
+            border-radius: 10px;
+            padding: 35px;
+            max-width: 720px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .label {
+            color: #777;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 9px 14px;
+            background: #f0f0ed;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .record {
+            margin-top: 45px;
+            color: #777;
+            font-size: 14px;
+            max-width: 720px;
+        }
+
+        footer {
+            max-width: 900px;
+            margin: auto;
+            padding: 35px 20px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .row {
+                grid-template-columns: 1fr;
+                gap: 3px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .header-inner {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+        <a class="logo" href="../index.html">Равный старт</a>
+        <a class="back" href="../archive.html">← Архив</a>
+    </div>
+</header>
+
+<main>
+
+    <div class="number">ПОДАРОК №0001</div>
+
+    <h1>Игровая консоль</h1>
+
+    <div class="institution">
+        Омск · Дом детства им. Кравцова
+    </div>
+
+    <div class="card">
+
+        <div class="row">
+            <div class="label">Возраст</div>
+            <div>14 лет</div>
+        </div>
+
+        <div class="row">
+            <div class="label">День рождения</div>
+            <div>3 ноября 2025</div>
+        </div>
+
+        <div class="row">
+            <div class="label">Стоимость</div>
+            <div>1 868 ₽</div>
+        </div>
+
+        <div class="row">
+            <div class="label">Получен в ПВЗ</div>
+            <div>14 ноября 2025</div>
+        </div>
+
+        <div class="row">
+            <div class="label">Место получения</div>
+            <div>ПВЗ Wildberries</div>
+        </div>
+
+        <div class="status">
+            Получен учреждением
+        </div>
+
+    </div>
+
+    <div class="record">
+        Архивная запись №0001 · Равный старт
+    </div>
+
+</main>
+
+<footer>
+    © Равный старт
+</footer>
+
+</body>
+</html>
