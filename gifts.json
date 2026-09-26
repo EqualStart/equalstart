@@ -1,0 +1,15 @@
+[
+  {
+    "id": "0001",
+    "gift": "Игровая консоль",
+    "city": "Омск",
+    "institution": "Дом детства им. Кравцова",
+    "age": 14,
+    "birthday": "2025-11-03",
+    "price": 1868,
+    "currency": "RUB",
+    "pickup_date": "2025-11-14",
+    "pickup_place": "ПВЗ Wildberries",
+    "status": "Получен учреждением"
+  }
+]
