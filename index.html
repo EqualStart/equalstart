@@ -267,7 +267,7 @@
             </div>
 
             <div class="stat">
-                <div class="stat-number">30+</div>
+                <div class="stat-number"><span id="gift-count">30+</span></div>
                 <div class="stat-text">подарков передано</div>
             </div>
 
@@ -361,6 +361,16 @@
     © Равный старт
 </footer>
 
-
+<script>
+    fetch("gifts.json")
+        .then(response => response.json())
+        .then(gifts => {
+            document.getElementById("gift-count").textContent = gifts.length;
+        })
+        .catch(error => {
+            console.error("Не удалось загрузить количество подарков");
+        });
+</script>
+    
 </body>
 </html>
