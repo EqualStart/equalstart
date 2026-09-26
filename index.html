@@ -365,7 +365,23 @@
     fetch("gifts.json")
         .then(response => response.json())
         .then(gifts => {
-            document.getElementById("gift-count").textContent = gifts.length;
+            const count = gifts.length;
+
+document.getElementById("gift-count").textContent = count;
+
+let word = "подарков";
+
+if (count % 10 === 1 && count % 100 !== 11) {
+    word = "подарок";
+} else if (
+    count % 10 >= 2 &&
+    count % 10 <= 4 &&
+    !(count % 100 >= 12 && count % 100 <= 14)
+) {
+    word = "подарка";
+}
+
+document.getElementById("gift-word").textContent = word;
         })
         .catch(error => {
             console.error("Не удалось загрузить количество подарков");
