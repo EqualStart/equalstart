@@ -11,5 +11,18 @@
     "pickup_date": "2025-11-14",
     "pickup_place": "ПВЗ Wildberries",
     "status": "Получен учреждением"
+  },
+  {
+    "id": "0002",
+    "gift": "Кроссовки",
+    "city": "Омск",
+    "institution": "Дом детства им. Кравцова",
+    "age": 16,
+    "birthday": "2025-11-20",
+    "price": 1623,
+    "currency": "RUB",
+    "pickup_date": "2025-11-14",
+    "pickup_place": "ПВЗ Wildberries",
+    "status": "Получен учреждением"
   }
 ]
