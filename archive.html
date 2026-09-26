@@ -59,9 +59,14 @@
             margin-bottom: 50px;
         }
 
+        .gift-list {
+            display: grid;
+            gap: 18px;
+            max-width: 720px;
+        }
+
         .gift {
             display: block;
-            max-width: 720px;
             padding: 28px 30px;
             background: white;
             border: 1px solid #e2e2e2;
@@ -99,6 +104,10 @@
             font-weight: bold;
         }
 
+        .error {
+            color: #777;
+        }
+
         footer {
             max-width: 1000px;
             margin: auto;
@@ -134,30 +143,89 @@
         История подарков проекта «Равный старт».
     </p>
 
-    <a class="gift" href="gifts/0001.html">
-
-        <div class="number">ПОДАРОК №0001</div>
-
-        <h2>Игровая консоль</h2>
-
-        <div class="institution">
-            Омск · Дом детства им. Кравцова
-        </div>
-
-        <div class="details">
-            14 ноября 2025 · 1 868 ₽
-        </div>
-
-        <div class="more">
-            Подробнее →
-        </div>
-
-    </a>
+    <div id="gift-list" class="gift-list">
+        Загружаем архив...
+    </div>
 
 </main>
 
 <footer>
     © Равный старт
+</footer>
+
+<script>
+    function formatDate(dateString) {
+        const date = new Date(dateString + "T00:00:00");
+
+        return new Intl.DateTimeFormat("ru-RU", {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        }).format(date);
+    }
+
+    function formatPrice(price) {
+        return new Intl.NumberFormat("ru-RU").format(price) + " ₽";
+    }
+
+    fetch("gifts.json")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Не удалось загрузить архив");
+            }
+
+            return response.json();
+        })
+
+        .then(gifts => {
+
+            const list = document.getElementById("gift-list");
+            list.innerHTML = "";
+
+            gifts
+                .slice()
+                .reverse()
+                .forEach(gift => {
+
+                    const card = document.createElement("a");
+
+                    card.className = "gift";
+                    card.href = "gifts/" + gift.id + ".html";
+
+                    card.innerHTML = `
+                        <div class="number">
+                            ПОДАРОК №${gift.id}
+                        </div>
+
+                        <h2>${gift.gift}</h2>
+
+                        <div class="institution">
+                            ${gift.city} · ${gift.institution}
+                        </div>
+
+                        <div class="details">
+                            ${formatDate(gift.pickup_date)}
+                            ·
+                            ${formatPrice(gift.price)}
+                        </div>
+
+                        <div class="more">
+                            Подробнее →
+                        </div>
+                    `;
+
+                    list.appendChild(card);
+                });
+        })
+
+        .catch(error => {
+            document.getElementById("gift-list").innerHTML =
+                '<div class="error">Архив временно недоступен.</div>';
+        });
+</script>
+
+</body>
+</html>
 </footer>
 
 </body>
