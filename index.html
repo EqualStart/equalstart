@@ -38,9 +38,36 @@
         }
 
         .logo {
-            font-size: 22px;
-            font-weight: bold;
-        }
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.equal-symbol {
+    width: 58px;
+}
+
+.start-line {
+    width: 58px;
+    height: 2px;
+    background: #222;
+    margin-bottom: 6px;
+}
+
+.start-circles {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4px;
+}
+
+.start-circles span {
+    width: 8px;
+    height: 8px;
+    border: 1.5px solid #222;
+    border-radius: 50%;
+}
 
         nav a {
             margin-left: 22px;
@@ -209,9 +236,20 @@
 <header>
     <div class="header-inner">
 
-        <div class="logo">
-            Равный старт
+           <div class="logo">
+    <div class="equal-symbol">
+        <div class="start-line"></div>
+        <div class="start-circles">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
+    </div>
+
+    <span>Равный старт</span>
+</div>
 
         <nav>
             <a href="#about">О проекте</a>
