@@ -414,5 +414,58 @@
     "pickup_date": "2026-09-04",
     "pickup_place": "ПВЗ Wildberries",
     "status": "Получен учреждением"
-  }
+  },
+{
+  "id": "0033",
+  "gift": "Набор футболок, наклейки",
+  "city": "Омск",
+  "institution": "Дом детства «Радуга»",
+  "age": 12,
+  "birthday": "2026-10-10",
+  "price": 2093,
+  "currency": "RUB",
+  "pickup_date": "2026-10-05",
+  "pickup_place": "ПВЗ Wildberries",
+  "status": "Получен учреждением"
+},
+{
+  "id": "0034",
+  "gift": "Пауэрбанк, удлинитель",
+  "city": "Омск",
+  "institution": "Дом детства «Радуга»",
+  "age": 15,
+  "birthday": "2026-10-14",
+  "price": 1754,
+  "currency": "RUB",
+  "pickup_date": "2026-10-05",
+  "pickup_place": "ПВЗ Wildberries",
+  "status": "Получен учреждением"
+},
+{
+  "id": "0035",
+  "gift": "Футболки, наушники, чехол, удлинитель",
+  "city": "Омск",
+  "institution": "Дом детства «Радуга»",
+  "age": 15,
+  "birthday": "2026-10-14",
+  "price": 2055,
+  "currency": "RUB",
+  "pickup_date": "2026-10-05",
+  "pickup_place": "ПВЗ Wildberries",
+  "status": "Получен учреждением"
+},
+{
+  "id": "0036",
+  "gift": "Колонка, наушники",
+  "city": "Омск",
+  "institution": "Дом детства «Радуга»",
+  "age": 15,
+  "birthday": "2026-10-12",
+  "price": 2016,
+  "currency": "RUB",
+  "pickup_date": "2026-10-05",
+  "pickup_place": "ПВЗ Wildberries",
+  "status": "Получен учреждением"
+}
+  
 ]
