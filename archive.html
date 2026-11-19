@@ -204,7 +204,7 @@
                         </div>
 
                         <div class="details">
-                            ${formatDate(gift.pickup_date)}
+                            ${gift.pickup_date ? formatDate(gift.pickup_date) : gift.status}
                             ·
                             ${formatPrice(gift.price)}
                         </div>
