@@ -1,235 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Архив подарков — Равный старт</title>
-
-    <style>
-        * { box-sizing: border-box; }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            color: #222;
-            background: #f7f7f5;
-            line-height: 1.6;
-        }
-
-        header {
-            background: white;
-            border-bottom: 1px solid #e5e5e5;
-            padding: 24px 20px;
-        }
-
-        .header-inner {
-            max-width: 1000px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #222;
-            text-decoration: none;
-        }
-
-        .back {
-            color: #555;
-            text-decoration: none;
-        }
-
-        main {
-            max-width: 1000px;
-            margin: auto;
-            padding: 70px 20px 100px;
-        }
-
-        h1 {
-            font-size: 44px;
-            margin: 0 0 12px;
-        }
-
-        .intro {
-            color: #666;
-            font-size: 18px;
-            margin-bottom: 50px;
-        }
-
-        .gift-list {
-            display: grid;
-            gap: 10px;
-            max-width: 720px;
-        }
-
-        .gift {
-            display: block;
-            padding: 12px 18px;
-            background: white;
-            border: 1px solid #e2e2e2;
-            border-radius: 10px;
-            color: #222;
-            text-decoration: none;
-            text-align: center;
-            font-size: 14px;
-            line-height: 1.35;
-        }
-
-        .gift:hover {
-            border-color: #aaa;
-        }
-
-        .number {
-            color: #777;
-            font-size: 12px;
-            margin-bottom: 3px;
-        }
-
-        .gift h2 {
-            font-size: 20px;
-            margin: 0 0 3px;
-        }
-
-        .institution {
-            color: #666;
-            margin-bottom: 8px;
-        }
-
-        .details {
-            color: #555;
-        }
-
-        .more {
-            margin-top: 6px;
-            font-weight: bold;
-        }
-
-        .error {
-            color: #777;
-        }
-
-        footer {
-            max-width: 1000px;
-            margin: auto;
-            padding: 35px 20px;
-            color: #777;
-            font-size: 14px;
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 36px; }
-
-            .gift {
-                padding: 10px 12px;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Архив подарков — Равный старт</title>
+  <link rel="stylesheet" href="archive.css">
+  <script type="module" src="archive.js"></script>
 </head>
-
-<body>
-
-<header>
-    <div class="header-inner">
-        <a class="logo" href="index.html">Равный старт</a>
-        <a class="back" href="index.html">← На главную</a>
-    </div>
+<body data-page="archive">
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">✳</span> Равный старт</a>
+    <a class="nav-link" href="index.html">На главную</a>
+  </div>
 </header>
-
-<main>
-
+<main class="shell">
+  <section class="archive-intro">
     <h1>Архив подарков</h1>
-
-    <p class="intro">
-        История подарков проекта «Равный старт».
-    </p>
-
-    <div id="gift-list" class="gift-list">
-        Загружаем архив...
-    </div>
-
+    <p>Мы сохраняем историю подарков, которые дети выбирают сами. Каждая запись — маленькая часть большого дела.</p>
+    <dl class="stats">
+      <div><dt>Подарков</dt><dd id="gift-count">—</dd></div>
+      <div><dt>Учреждений</dt><dd id="institution-count">—</dd></div>
+      <div><dt>Год начала проекта</dt><dd>2025</dd></div>
+    </dl>
+  </section>
+  <section class="catalog" aria-label="Каталог подарков">
+    <form id="filters" class="filters" role="search" hidden>
+      <label>Поиск<input id="search" type="search" placeholder="Номер или название"></label>
+      <label>Год получения<select id="year"><option value="">Все годы</option></select></label>
+      <label>Детский дом<select id="institution"><option value="">Все учреждения</option></select></label>
+      <label>Дата получения<select id="sort"><option value="recent">Сначала новые</option><option value="oldest">Сначала ранние</option></select></label>
+    </form>
+    <p class="results" id="results" role="status">Загрузка архива…</p>
+    <noscript>Для просмотра архива включите JavaScript.</noscript>
+    <ul id="gift-list" class="gift-grid"></ul>
+  </section>
 </main>
-
-<footer>
-    © Равный старт
-</footer>
-
-<script>
-    function formatDate(dateString) {
-        const date = new Date(dateString + "T00:00:00");
-
-        return new Intl.DateTimeFormat("ru-RU", {
-            day: "numeric",
-            month: "long",
-            year: "numeric"
-        }).format(date);
-    }
-
-    function formatPrice(price) {
-        return new Intl.NumberFormat("ru-RU").format(price) + " ₽";
-    }
-
-    fetch("gifts.json")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Не удалось загрузить архив");
-            }
-
-            return response.json();
-        })
-
-        .then(gifts => {
-
-            const list = document.getElementById("gift-list");
-            list.innerHTML = "";
-
-            gifts
-                .slice()
-                .reverse()
-                .forEach(gift => {
-
-                    const card = document.createElement("a");
-
-                    card.className = "gift";
-                    card.href = "gift.html?id=" + gift.id;
-
-                    card.innerHTML = `
-                        <div class="number">
-                            ПОДАРОК №${gift.id}
-                        </div>
-
-                        <h2>${gift.gift}</h2>
-
-                        <div class="institution">
-                            ${gift.city} · ${gift.institution}
-                        </div>
-
-                        <div class="details">
-                            ${gift.pickup_date ? formatDate(gift.pickup_date) : gift.status}
-                            ·
-                            ${formatPrice(gift.price)}
-                        </div>
-
-                        <div class="more">
-                            Подробнее →
-                        </div>
-                    `;
-
-                    list.appendChild(card);
-                });
-        })
-
-        .catch(error => {
-            document.getElementById("gift-list").innerHTML =
-                '<div class="error">Архив временно недоступен.</div>';
-        });
-</script>
-
-</body>
-</html>
-</footer>
-
+<footer class="shell site-footer">© Равный старт</footer>
 </body>
 </html>
