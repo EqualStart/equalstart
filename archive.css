@@ -40,7 +40,7 @@ h1 { margin: 0; font: 400 clamp(2.2rem, 6vw, 4.4rem)/1.06 Georgia, serif; letter
 .gift-card:hover, .gift-card:focus-within { border-color: var(--sage); }
 .icon { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 12px; background: var(--sage-light); color: var(--link); flex: none; }
 .icon svg { width: 55%; height: 55%; }
-.record-number, .institution { margin: 0; color: var(--muted); font-size: .875rem; }
+.record-number, .institution, .birthday { margin: 0; color: var(--muted); font-size: .875rem; }
 .gift-card h2 { font-size: 1.125rem; line-height: 1.35; margin: 0; overflow-wrap: anywhere; }
 .card-meta { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .25rem .8rem; margin: .15rem 0 0; font-size: .875rem; }
 .status { display: inline-block; padding: .2rem .65rem; border-radius: 12px; background: var(--sage-light); font-size: .875rem; }
@@ -59,6 +59,15 @@ h1 { margin: 0; font: 400 clamp(2.2rem, 6vw, 4.4rem)/1.06 Georgia, serif; letter
 .facts th { color: var(--muted); font-weight: 500; }
 .document { margin: .6rem 0 0; padding-top: .8rem; border-top: 1px solid var(--line); text-align: center; }
 .site-footer { margin-top: 2rem; padding-block: 1rem 1.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .875rem; }
+@media (width > 38rem) {
+  .gift-card {
+    display: grid;
+    grid-row: span 8;
+    grid-template-rows: subgrid;
+    align-items: start;
+    justify-items: center;
+  }
+}
 @media (max-width: 52rem) {
   .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

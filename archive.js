@@ -71,6 +71,7 @@ function archiveCard(gift) {
     element("p", "record-number", "Подарок №" + gift.id),
     element("h2", "", gift.gift),
     element("p", "institution", gift.institution),
+    element("p", "birthday", "День рождения · " + dateLabel(gift.birthday, gift.show_birthday_year)),
     meta,
     element("span", "status", statusLabel(gift)),
     link
