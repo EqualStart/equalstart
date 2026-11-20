@@ -80,6 +80,7 @@ h1 { margin: 0; font: 400 clamp(2.2rem, 6vw, 4.4rem)/1.06 Georgia, serif; letter
 @media (max-width: 38rem) {
   .shell { width: min(100% - 24px, 68rem); }
   .gift-grid { grid-template-columns: minmax(0, 1fr); }
+  .stats div { justify-content: flex-end; }
 }
 @media (max-width: 25rem) {
   .filters { grid-template-columns: minmax(0, 1fr); }
