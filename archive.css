@@ -24,6 +24,10 @@ a:hover { text-decoration-thickness: 2px; }
 .brand { display: inline-flex; align-items: center; gap: .65rem; color: var(--ink); font-weight: 700; text-decoration: none; }
 .brand-mark { display: grid; place-items: center; background: var(--sage-light); color: var(--link); width: 2rem; height: 2rem; border-radius: 50%; }
 .nav-link { font-size: .9rem; }
+[data-page="archive"] .header-inner { display: grid; grid-template-columns: 1fr auto 1fr; gap: .75rem; }
+[data-page="archive"] .nav-link { justify-self: end; text-align: right; }
+.equal-symbol { display: flex; justify-content: space-between; width: 58px; padding: 6px 4px 0; border-top: 2px solid currentColor; }
+.equal-symbol span { width: 8px; height: 8px; border: 1.5px solid currentColor; border-radius: 50%; }
 h1 { margin: 0; font: 400 clamp(2.2rem, 6vw, 4.4rem)/1.06 Georgia, serif; letter-spacing: -.035em; overflow-wrap: anywhere; }
 .archive-intro { margin-block: 2rem 1.5rem; padding: clamp(1.25rem, 5vw, 3rem); background: var(--sage-light); border: 1px solid var(--line); border-radius: 20px; }
 .archive-intro p { margin: .9rem 0 1.5rem; }
