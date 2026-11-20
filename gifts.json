@@ -609,5 +609,18 @@
     "pickup_date": "2026-11-23",
     "pickup_place": "ПВЗ Ozon",
     "status": "Ожидает получения"
+  },
+  {
+    "id": "0048",
+    "gift": "Рюкзак, духи и пауэрбанк",
+    "city": "Омск",
+    "institution": "Дом детства им. Кравцова",
+    "age": 14,
+    "birthday": "2026-11-29",
+    "price": 3130,
+    "currency": "RUB",
+    "pickup_date": "2026-11-23",
+    "pickup_place": "ПВЗ",
+    "status": ""
   }
 ]
