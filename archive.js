@@ -21,9 +21,15 @@ function element(tag, className, text) {
   return node;
 }
 
-function dateLabel(date, showYear = true) {
+function dateLabel(date) {
+  return date ? fullDates.format(new Date(date)) : "—";
+}
+
+function birthdayLabel(date) {
   if (!date) return "—";
-  return (showYear ? fullDates : shortDates).format(new Date(date));
+  // Use a leap year to format month-day records, including February 29.
+  const monthDay = date.slice(-5);
+  return shortDates.format(new Date("2000-" + monthDay));
 }
 
 function statusLabel(gift) {
@@ -71,7 +77,7 @@ function archiveCard(gift) {
     element("p", "record-number", "Подарок №" + gift.id),
     element("h2", "", gift.gift),
     element("p", "institution", gift.institution),
-    element("p", "birthday", "День рождения · " + dateLabel(gift.birthday, gift.show_birthday_year)),
+    element("p", "birthday", "День рождения · " + birthdayLabel(gift.birthday)),
     meta,
     element("span", "status", statusLabel(gift)),
     link
@@ -152,7 +158,7 @@ function renderGift(gifts) {
   const age = new Intl.NumberFormat("ru-RU", { style: "unit", unit: "year", unitDisplay: "long" });
   for (const [label, value] of [
     ["Возраст", age.format(gift.age)],
-    ["День рождения", dateLabel(gift.birthday, gift.show_birthday_year)],
+    ["День рождения", birthdayLabel(gift.birthday)],
     ["Стоимость", price],
     ["Дата получения в ПВЗ", dateLabel(gift.pickup_date)],
     ["Учреждение", [gift.city, gift.institution].filter(Boolean).join(" · ")],
