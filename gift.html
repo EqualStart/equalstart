@@ -226,6 +226,12 @@
                         <div>${gift.pickup_place}</div>
                     </div>
 
+                    ${["0038", "0039", "0040", "0041", "0042"].includes(gift.id) ? `
+                        <div class="row">
+                            <div class="label">Документ</div>
+                            <a href="Ozon_Bank_public_redacted_2025-2026.pdf">Выписка Ozon Банка (PDF)</a>
+                        </div>
+                    ` : ""}
                     <div class="status">
                         ${gift.status}
                     </div>
