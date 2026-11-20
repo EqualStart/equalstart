@@ -64,6 +64,8 @@ h1 { margin: 0; font: 400 clamp(2.2rem, 6vw, 4.4rem)/1.06 Georgia, serif; letter
 .document { margin: .6rem 0 0; padding-top: .8rem; border-top: 1px solid var(--line); text-align: center; }
 .site-footer { margin-top: 2rem; padding-block: 1rem 1.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .875rem; }
 @media (width > 38rem) {
+  .stats { text-align: center; }
+
   .gift-card {
     display: grid;
     grid-row: span 8;
