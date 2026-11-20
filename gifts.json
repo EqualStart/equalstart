@@ -618,9 +618,10 @@
     "age": 14,
     "birthday": "2026-11-29",
     "price": 3130,
+    "show_birthday_year": false,
     "currency": "RUB",
     "pickup_date": "2026-11-23",
-    "pickup_place": "ПВЗ",
+    "pickup_place": "ПВЗ Озон",
     "status": ""
   }
 ]

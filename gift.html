@@ -141,13 +141,13 @@
 
 <script>
 
-    function formatDate(dateString) {
+    function formatDate(dateString, showYear = true) {
         const date = new Date(dateString + "T00:00:00");
 
         return new Intl.DateTimeFormat("ru-RU", {
             day: "numeric",
             month: "long",
-            year: "numeric"
+            year: showYear ? "numeric" : undefined
         }).format(date);
     }
 
@@ -202,7 +202,7 @@
 
                     <div class="row">
                         <div class="label">День рождения</div>
-                        <div>${formatDate(gift.birthday)}</div>
+                        <div>${formatDate(gift.birthday, gift.show_birthday_year)}</div>
                     </div>
 
                     <div class="row">
@@ -220,7 +220,7 @@
                         <div>${gift.pickup_place}</div>
                     </div>
 
-                    ${["0038", "0039", "0040", "0041", "0042"].includes(gift.id) ? `
+                    ${["0038", "0039", "0040", "0041", "0042", "0048"].includes(gift.id) ? `
                         <div class="row">
                             <div class="label">Документ</div>
                             <a href="Ozon_Bank_public_redacted_2025-2026.pdf">Выписка Ozon Банка (PDF)</a>
