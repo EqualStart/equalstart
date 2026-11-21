@@ -20,12 +20,9 @@ a:hover { text-decoration-thickness: 2px; }
 :focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
 .shell { width: min(100% - 40px, 68rem); margin-inline: auto; }
 .site-header { border-bottom: 1px solid var(--line); background: var(--white); }
-.header-inner { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-.brand { display: inline-flex; align-items: center; gap: .65rem; color: var(--ink); font-weight: 700; text-decoration: none; }
-.brand-mark { display: grid; place-items: center; background: var(--sage-light); color: var(--link); width: 2rem; height: 2rem; border-radius: 50%; }
-.nav-link { font-size: .9rem; }
-[data-page="archive"] .header-inner { display: grid; grid-template-columns: 1fr auto 1fr; gap: .75rem; }
-[data-page="archive"] .nav-link { justify-self: end; text-align: right; }
+.header-inner { min-height: 68px; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: .75rem; }
+.brand { justify-self: start; color: var(--ink); font-weight: 700; text-decoration: none; }
+.nav-link { justify-self: end; text-align: right; font-size: .9rem; }
 .equal-symbol { display: flex; justify-content: space-between; width: 58px; padding: 6px 4px 0; border-top: 2px solid currentColor; }
 .equal-symbol span { width: 8px; height: 8px; border: 1.5px solid currentColor; border-radius: 50%; }
 h1 { margin: 0; font: 400 clamp(2.2rem, 6vw, 4.4rem)/1.06 Georgia, serif; letter-spacing: -.035em; overflow-wrap: anywhere; }
