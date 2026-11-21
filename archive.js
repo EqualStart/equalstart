@@ -183,7 +183,7 @@ function renderGift(gifts) {
 
 const isArchive = document.body.dataset.page === "archive";
 try {
-  const response = await fetch("gifts.json");
+  const response = await fetch("gifts.json", { cache: "no-cache" });
   if (!response.ok) throw new Error("HTTP " + response.status);
   const gifts = await response.json();
   if (isArchive) renderArchive(gifts);
