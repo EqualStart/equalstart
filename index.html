@@ -32,8 +32,8 @@
         .header-inner {
             max-width: 1000px;
             margin: auto;
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
             align-items: center;
         }
 
@@ -51,7 +51,7 @@
 
 .start-line {
     width: 58px;
-    height: 2px;
+    height: 4px;
     background: #222;
     margin-bottom: 6px;
 }
@@ -65,9 +65,13 @@
 .start-circles span {
     width: 8px;
     height: 8px;
-    border: 1.5px solid #222;
+    border: 3px solid #222;
     border-radius: 50%;
 }
+
+        nav {
+            justify-self: end;
+        }
 
         nav a {
             margin-left: 22px;
@@ -198,11 +202,9 @@
 
         @media (max-width: 700px) {
 
-            .header-inner {
-                display: block;
-            }
-
             nav {
+                grid-column: 1 / -1;
+                justify-self: start;
                 margin-top: 15px;
             }
 
@@ -236,20 +238,17 @@
 <header>
     <div class="header-inner">
 
-           <div class="logo">
-    <div class="equal-symbol">
-        <div class="start-line"></div>
-        <div class="start-circles">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="logo">Равный старт</div>
+        <div class="equal-symbol" aria-hidden="true">
+            <div class="start-line"></div>
+            <div class="start-circles">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-    </div>
-
-    <span>Равный старт</span>
-</div>
 
         <nav>
             <a href="#about">О проекте</a>
