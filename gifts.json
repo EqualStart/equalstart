@@ -622,5 +622,18 @@
     "pickup_date": "2026-11-23",
     "pickup_place": "ПВЗ Озон",
     "status": ""
+  },
+  {
+    "id": "0049",
+    "gift": "Пауэрбанк MYGAIDI, 50 000 мА·ч",
+    "city": "Омск",
+    "institution": "Дом детства им. Кравцова",
+    "age": 13,
+    "birthday": "12-07",
+    "price": 1955,
+    "currency": "RUB",
+    "pickup_date": "",
+    "pickup_place": "ПВЗ Озон",
+    "status": "Оплачен, в сборке"
   }
 ]
