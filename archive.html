@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Архив подарков — Равный старт</title>
   <link rel="stylesheet" href="archive.css?v=mobile-stats">
-  <script type="module" src="archive.js?v=fresh-gift-data"></script>
+  <script type="module" src="archive.js?v=sort-by-number"></script>
 </head>
 <body data-page="archive">
 <header class="site-header">
@@ -32,7 +32,13 @@
       <label>Поиск<input id="search" type="search" placeholder="Номер или название"></label>
       <label>Год получения<select id="year"><option value="">Все годы</option></select></label>
       <label>Детский дом<select id="institution"><option value="">Все учреждения</option></select></label>
-      <label>Дата получения<select id="sort"><option value="recent">Сначала новые</option><option value="oldest">Сначала ранние</option></select></label>
+      <label>Сортировка
+        <select id="sort">
+          <option value="number" selected>По номеру ↓</option>
+          <option value="recent">По дате · сначала новые</option>
+          <option value="oldest">По дате · сначала ранние</option>
+        </select>
+      </label>
     </form>
     <p class="results" id="results" role="status">Загрузка архива…</p>
     <noscript>Для просмотра архива включите JavaScript.</noscript>

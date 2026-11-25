@@ -90,6 +90,8 @@ function normalize(value) {
 }
 
 function compareGifts(a, b, order) {
+  if (order === "number") return collator.compare(b.id, a.id);
+
   if (!a.pickup_date || !b.pickup_date) {
     return Number(!a.pickup_date) - Number(!b.pickup_date) || collator.compare(b.id, a.id);
   }
