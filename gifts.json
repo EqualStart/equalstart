@@ -632,9 +632,9 @@
     "birthday": "12-07",
     "price": 1955,
     "currency": "RUB",
-    "pickup_date": "",
+    "pickup_date": "2026-11-27",
     "pickup_place": "ПВЗ Озон",
-    "status": "Оплачен, в сборке"
+    "status": "Получен в ПВЗ"
   },
   {
     "id": "0050",
@@ -645,8 +645,8 @@
     "birthday": "12-30",
     "price": 2218,
     "currency": "RUB",
-    "pickup_date": "",
+    "pickup_date": "2026-11-27",
     "pickup_place": "ПВЗ Озон",
-    "status": "Оплачен, ожидает доставки"
+    "status": "Получен в ПВЗ"
   }
 ]
